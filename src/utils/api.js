@@ -3,7 +3,7 @@ import axios from "axios";
 const createNewBin = async () => {
   console.log("creating bin");
   let data = await axios
-    .get("http://localhost:3010/create")
+    .get("http://binme.jtwgus.com/create")
     .then((response) => {
       return response.data;
     })
@@ -16,7 +16,7 @@ const createNewBin = async () => {
 const viewBin = async (binId) => {
   console.log("viewing bin");
   let binRequests = await axios
-    .get(`http://localhost:3010/inspect/${binId}`)
+    .get(`http://binme.jtwgus.com/inspect/${binId}`)
     .then((response) => {
       return response;
     })
