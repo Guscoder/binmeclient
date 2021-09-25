@@ -1,70 +1,8 @@
 import React, { useState } from "react";
 import SubmitBinForm from "./SubmitBinForm";
-import Row from "react-bootstrap/Row";
 import "./tableRow.css";
-
-import Table from "react-bootstrap/table";
 import * as API from "../utils/api";
 import BinTable from "./BinTable";
-
-// const createRequestTables = (requests, title) => {
-//   return (
-//     <>
-//       <Row>
-//         <h2>Request Bin Id: {title}</h2>
-//       </Row>
-//       {requests.map((request) => {
-//         return (
-//           <Row>
-//             <div className='col-lg-5'>
-//               <Table striped bordered hover>
-//                 <thead>
-//                   <tr>
-//                     <th colSpan='2'>Hi</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   <tr>
-//                     <th>Subject</th>
-//                     <th>Data</th>
-//                   </tr>
-//                   {Object.keys(request.payload).map((item, idx) => {
-//                     return (
-//                       <tr>
-//                         <td>{item}</td>
-//                         <td>{request.payload[item]}</td>
-//                       </tr>
-//                     );
-//                   })}
-//                 </tbody>
-//               </Table>
-//             </div>
-//             <div className='col-lg-5'>
-//               <Table striped bordered hover>
-//                 <thead>
-//                   <tr>
-//                     <th>Subject</th>
-//                     <th>Data</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {Object.keys(request.headers).map((header, idx) => {
-//                     return (
-//                       <tr>
-//                         <td>{header}</td>
-//                         <td>{request.headers[header]}</td>
-//                       </tr>
-//                     );
-//                   })}
-//                 </tbody>
-//               </Table>
-//             </div>
-//           </Row>
-//         );
-//       })}
-//     </>
-//   );
-// };
 
 const ViewBin = () => {
   const [binContents, setBinContents] = useState([]);
@@ -79,7 +17,9 @@ const ViewBin = () => {
     if (binId === "") {
       alert("Please input your Bin Id");
     }
-    let contents = await API.viewBin(binId);
+    let contents = await API.viewBin(binId).catch((error) => {
+      console.log(error);
+    });
     console.log(contents);
     setBinContents(contents.data);
   };

@@ -26,7 +26,7 @@ const CreateBin = () => {
           <p class='display-6 text-primary fw-bold'>{newbinId}</p>
           <h3>Give this link to your webhook provider:</h3>
           <p class='display-6 text-primary fw-bold'>
-            https://binme.jtwgus.net/{newbinId}
+            https://binme.jtwgus.net/bins/{newbinId}
           </p>
           <ShowLanguage binId={newbinId} />
         </div>
